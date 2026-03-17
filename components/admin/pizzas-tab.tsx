@@ -39,10 +39,9 @@ import {
 import { Pizza, PizzaSizeOption } from '@/lib/types'
 
 const defaultSizes: PizzaSizeOption[] = [
-  { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa' },
-  { size: 'media', label: 'Media', price: 39.90, serves: '2 pessoas' },
-  { size: 'grande', label: 'Grande', price: 54.90, serves: '3 pessoas' },
-  { size: 'familia', label: 'Familia', price: 69.90, serves: '4+ pessoas' },
+  { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
+  { size: 'media', label: 'Media', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
+  { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
 ]
 
 const categories = [

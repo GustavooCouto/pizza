@@ -11,10 +11,10 @@ interface DrinkCardProps {
 }
 
 export function DrinkCard({ drink }: DrinkCardProps) {
-  const { addItem } = useCart()
+  const { addDrink } = useCart()
 
   const handleAddToCart = () => {
-    addItem({
+    addDrink({
       id: drink.id,
       type: 'drink',
       name: drink.name,

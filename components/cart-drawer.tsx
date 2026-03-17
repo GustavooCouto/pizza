@@ -1,13 +1,18 @@
 'use client'
 
 import Image from 'next/image'
-import { Minus, Plus, Trash2, ShoppingBag, X } from 'lucide-react'
+import { Minus, Plus, Trash2, ShoppingBag, Pizza } from 'lucide-react'
 import { useCart } from '@/components/cart-provider'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { DELIVERY_FEE } from '@/lib/menu-data'
 import { CheckoutModal } from '@/components/checkout-modal'
 import { useState } from 'react'
+import { PizzaCartItem, DrinkCartItem } from '@/lib/types'
+
+function isPizzaItem(item: PizzaCartItem | DrinkCartItem): item is PizzaCartItem {
+  return item.type === 'pizza'
+}
 
 export function CartDrawer() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, getTotal, clearCart } = useCart()
@@ -35,67 +40,85 @@ export function CartDrawer() {
               <div>
                 <h3 className="font-semibold text-foreground">Carrinho vazio</h3>
                 <p className="text-sm text-muted-foreground">
-                  Adicione itens do cardápio para começar
+                  Adicione itens do cardapio para comecar
                 </p>
               </div>
             </div>
           ) : (
             <>
               <div className="flex-1 overflow-y-auto py-4 space-y-4">
-                {items.map((item) => {
-                  const itemKey = item.size ? `${item.id}-${item.size}` : item.id
-                  return (
-                    <div
-                      key={itemKey}
-                      className="flex gap-3 bg-card p-3 rounded-xl border border-border"
-                    >
-                      <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-foreground text-sm truncate">
-                          {item.name}
-                        </h4>
-                        {item.sizeLabel && (
-                          <p className="text-xs text-muted-foreground">{item.sizeLabel}</p>
-                        )}
-                        <span className="text-primary font-bold text-sm">
-                          R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
-                        </span>
-                      </div>
-                      <div className="flex flex-col items-end gap-2">
-                        <button
-                          onClick={() => removeItem(item.id, item.size)}
-                          className="text-muted-foreground hover:text-destructive transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                        <div className="flex items-center gap-2 bg-muted rounded-full">
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1, item.size)}
-                            className="p-1 hover:text-primary transition-colors"
-                          >
-                            <Minus className="w-3 h-3" />
-                          </button>
-                          <span className="text-sm font-medium w-5 text-center">
-                            {item.quantity}
-                          </span>
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1, item.size)}
-                            className="p-1 hover:text-primary transition-colors"
-                          >
-                            <Plus className="w-3 h-3" />
-                          </button>
+                {items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex gap-3 bg-card p-3 rounded-xl border border-border"
+                  >
+                    {isPizzaItem(item) ? (
+                      // Pizza item
+                      <>
+                        <div className="w-14 h-14 flex-shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
+                          <Pizza className="w-7 h-7 text-primary" />
                         </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-foreground text-sm">
+                            Pizza {item.sizeLabel}
+                          </h4>
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {item.flavors.map(f => f.name).join(', ')}
+                            {item.border && ` + ${item.border.name}`}
+                          </p>
+                          <span className="text-primary font-bold text-sm">
+                            R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      // Drink item
+                      <>
+                        <div className="relative w-14 h-14 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-foreground text-sm truncate">
+                            {item.name}
+                          </h4>
+                          <span className="text-primary font-bold text-sm">
+                            R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    <div className="flex flex-col items-end gap-2">
+                      <button
+                        onClick={() => removeItem(item.id)}
+                        className="text-muted-foreground hover:text-destructive transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                      <div className="flex items-center gap-2 bg-muted rounded-full">
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="p-1 hover:text-primary transition-colors"
+                        >
+                          <Minus className="w-3 h-3" />
+                        </button>
+                        <span className="text-sm font-medium w-5 text-center">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="p-1 hover:text-primary transition-colors"
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
                       </div>
                     </div>
-                  )
-                })}
+                  </div>
+                ))}
               </div>
 
               <div className="border-t border-border pt-4 space-y-4">

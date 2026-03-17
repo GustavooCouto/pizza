@@ -11,6 +11,7 @@ import {
   MapPin,
   CreditCard,
   ArrowRight,
+  Store,
 } from 'lucide-react'
 import { useAdmin } from '@/components/admin-provider'
 import { Button } from '@/components/ui/button'
@@ -24,7 +25,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Order } from '@/lib/types'
+import { Order, PizzaCartItem, DrinkCartItem } from '@/lib/types'
+
+function isPizzaItem(item: PizzaCartItem | DrinkCartItem): item is PizzaCartItem {
+  return item.type === 'pizza'
+}
 
 const statusConfig = {
   pending: {
@@ -127,6 +132,7 @@ export function OrdersTab() {
             const status = statusConfig[order.status]
             const StatusIcon = status.icon
             const nextStatus = getNextStatus(order.status)
+            const isDelivery = order.customer.deliveryType === 'entrega'
 
             return (
               <Card key={order.id} className="border-border">
@@ -140,10 +146,19 @@ export function OrdersTab() {
                         {formatDate(order.createdAt)}
                       </p>
                     </div>
-                    <Badge className={`${status.color} border`}>
-                      <StatusIcon className="w-3 h-3 mr-1" />
-                      {status.label}
-                    </Badge>
+                    <div className="flex flex-col items-end gap-2">
+                      <Badge className={`${status.color} border`}>
+                        <StatusIcon className="w-3 h-3 mr-1" />
+                        {status.label}
+                      </Badge>
+                      <Badge variant="outline" className="text-xs">
+                        {isDelivery ? (
+                          <><Truck className="w-3 h-3 mr-1" /> Entrega</>
+                        ) : (
+                          <><Store className="w-3 h-3 mr-1" /> Retirada</>
+                        )}
+                      </Badge>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -154,13 +169,15 @@ export function OrdersTab() {
                       <Phone className="w-3 h-3" />
                       {order.customer.phone}
                     </div>
-                    <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <MapPin className="w-3 h-3 mt-0.5" />
-                      <span>
-                        {order.customer.address}
-                        {order.customer.complement && ` - ${order.customer.complement}`}
-                      </span>
-                    </div>
+                    {isDelivery && (
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <MapPin className="w-3 h-3 mt-0.5" />
+                        <span>
+                          {order.customer.address}
+                          {order.customer.complement && ` - ${order.customer.complement}`}
+                        </span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CreditCard className="w-3 h-3" />
                       {order.customer.paymentMethod === 'pix' && 'PIX'}
@@ -183,20 +200,29 @@ export function OrdersTab() {
                         className="flex justify-between text-sm"
                       >
                         <span className="text-muted-foreground">
-                          {item.quantity}x {item.name}
-                          {item.sizeLabel && ` (${item.sizeLabel})`}
+                          {item.quantity}x{' '}
+                          {isPizzaItem(item) ? (
+                            <>
+                              Pizza {item.sizeLabel} ({item.flavors.map(f => f.name).join(', ')})
+                              {item.border && ` + ${item.border.name}`}
+                            </>
+                          ) : (
+                            item.name
+                          )}
                         </span>
                         <span className="text-foreground font-medium">
                           R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}
                         </span>
                       </div>
                     ))}
-                    <div className="flex justify-between text-sm pt-2 border-t border-border">
-                      <span className="text-muted-foreground">Taxa de entrega</span>
-                      <span className="text-foreground">
-                        R$ {order.deliveryFee.toFixed(2).replace('.', ',')}
-                      </span>
-                    </div>
+                    {isDelivery && (
+                      <div className="flex justify-between text-sm pt-2 border-t border-border">
+                        <span className="text-muted-foreground">Taxa de entrega</span>
+                        <span className="text-foreground">
+                          R$ {order.deliveryFee.toFixed(2).replace('.', ',')}
+                        </span>
+                      </div>
+                    )}
                     <div className="flex justify-between font-bold text-foreground">
                       <span>Total</span>
                       <span className="text-primary">

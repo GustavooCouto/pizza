@@ -3,10 +3,12 @@
 import { useState, useRef, useEffect } from 'react'
 import { pizzas, categories } from '@/lib/menu-data'
 import { PizzaCard } from '@/components/pizza-card'
+import { PizzaOrderModal } from '@/components/pizza-order-modal'
 import { cn } from '@/lib/utils'
 
 export function MenuSection() {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [orderModalOpen, setOrderModalOpen] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const filteredPizzas = activeCategory === 'all' 
@@ -29,13 +31,13 @@ export function MenuSection() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
           <span className="text-primary font-medium text-xs sm:text-sm uppercase tracking-wider">
-            Nosso Cardápio
+            Nosso Cardapio
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground mt-2">
             Pizzas Artesanais
           </h2>
           <p className="text-muted-foreground mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Orgânica por essência, recheada por prazer. Cada pizza é preparada com ingredientes 
+            Organica por essencia, recheada por prazer. Cada pizza e preparada com ingredientes 
             frescos e selecionados.
           </p>
         </div>
@@ -77,7 +79,11 @@ export function MenuSection() {
         {/* Pizza Grid - Optimized for mobile */}
         <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {filteredPizzas.map((pizza) => (
-            <PizzaCard key={pizza.id} pizza={pizza} />
+            <PizzaCard 
+              key={pizza.id} 
+              pizza={pizza} 
+              onOrder={() => setOrderModalOpen(true)}
+            />
           ))}
         </div>
 
@@ -86,6 +92,12 @@ export function MenuSection() {
           {filteredPizzas.length} {filteredPizzas.length === 1 ? 'pizza encontrada' : 'pizzas encontradas'}
         </p>
       </div>
+
+      {/* Pizza Order Modal */}
+      <PizzaOrderModal 
+        open={orderModalOpen} 
+        onOpenChange={setOrderModalOpen} 
+      />
     </section>
   )
 }

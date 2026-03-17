@@ -1,10 +1,11 @@
-export type PizzaSize = 'broto' | 'media' | 'grande' | 'familia'
+export type PizzaSize = 'broto' | 'media' | 'grande'
 
 export interface PizzaSizeOption {
   size: PizzaSize
   label: string
   price: number
   serves: string
+  maxFlavors: number
 }
 
 export interface Pizza {
@@ -28,6 +29,12 @@ export interface Drink {
   category: 'refrigerante' | 'suco' | 'cerveja' | 'agua'
 }
 
+export interface BorderOption {
+  id: string
+  name: string
+  price: number
+}
+
 export interface Extra {
   id: string
   name: string
@@ -37,16 +44,27 @@ export interface Extra {
   category: 'borda' | 'porcao'
 }
 
-export interface CartItem {
+export interface PizzaCartItem {
   id: string
-  type: 'pizza' | 'drink' | 'extra'
+  type: 'pizza'
+  size: PizzaSize
+  sizeLabel: string
+  flavors: { id: string; name: string }[]
+  border?: { id: string; name: string; price: number }
+  price: number
+  quantity: number
+}
+
+export interface DrinkCartItem {
+  id: string
+  type: 'drink'
   name: string
-  size?: PizzaSize
-  sizeLabel?: string
   price: number
   quantity: number
   image: string
 }
+
+export type CartItem = PizzaCartItem | DrinkCartItem
 
 export interface Customer {
   name: string
@@ -55,6 +73,7 @@ export interface Customer {
   complement?: string
   paymentMethod: 'dinheiro' | 'cartao' | 'pix'
   change?: number
+  deliveryType: 'entrega' | 'retirada'
 }
 
 export interface Order {

@@ -1,34 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { Plus, Flame, Leaf } from 'lucide-react'
-import { Pizza, PizzaSize } from '@/lib/types'
-import { useCart } from '@/components/cart-provider'
+import { Flame, Leaf } from 'lucide-react'
+import { Pizza } from '@/lib/types'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 interface PizzaCardProps {
   pizza: Pizza
+  onOrder: () => void
 }
 
-export function PizzaCard({ pizza }: PizzaCardProps) {
-  const [selectedSize, setSelectedSize] = useState<PizzaSize>('media')
-  const { addItem } = useCart()
-
-  const selectedSizeOption = pizza.sizes.find(s => s.size === selectedSize)!
-
-  const handleAddToCart = () => {
-    addItem({
-      id: pizza.id,
-      type: 'pizza',
-      name: pizza.name,
-      size: selectedSize,
-      sizeLabel: selectedSizeOption.label,
-      price: selectedSizeOption.price,
-      image: pizza.image,
-    })
-  }
+export function PizzaCard({ pizza, onOrder }: PizzaCardProps) {
+  const lowestPrice = Math.min(...pizza.sizes.map(s => s.price))
 
   return (
     <div className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
@@ -64,42 +47,20 @@ export function PizzaCard({ pizza }: PizzaCardProps) {
           {pizza.description}
         </p>
 
-        {/* Size Selection - Optimized for touch */}
-        <div className="grid grid-cols-4 gap-1 mb-3 sm:mb-4">
-          {pizza.sizes.map((sizeOption) => (
-            <button
-              key={sizeOption.size}
-              onClick={() => setSelectedSize(sizeOption.size)}
-              className={cn(
-                "py-2 sm:py-2.5 px-1 rounded-lg text-[10px] sm:text-xs font-medium transition-all touch-manipulation",
-                selectedSize === sizeOption.size
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80 active:scale-95"
-              )}
-            >
-              {sizeOption.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Price & Add Button */}
+        {/* Price & Order Button */}
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <span className="text-xl sm:text-2xl font-bold text-primary">
-              R$ {selectedSizeOption.price.toFixed(2).replace('.', ',')}
-            </span>
-            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">
-              Serve {selectedSizeOption.serves}
+            <span className="text-[10px] sm:text-xs text-muted-foreground">A partir de</span>
+            <p className="text-lg sm:text-xl font-bold text-primary">
+              R$ {lowestPrice.toFixed(2).replace('.', ',')}
             </p>
           </div>
           <Button
-            onClick={handleAddToCart}
+            onClick={onOrder}
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-xs sm:text-sm px-3 sm:px-4 h-9 sm:h-10 touch-manipulation active:scale-95 transition-transform"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-xs sm:text-sm px-4 sm:px-6 h-9 sm:h-10 touch-manipulation active:scale-95 transition-transform"
           >
-            <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
-            <span className="hidden xs:inline">Adicionar</span>
-            <span className="xs:hidden">Add</span>
+            Pedir
           </Button>
         </div>
       </div>
