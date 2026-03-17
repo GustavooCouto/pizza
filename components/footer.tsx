@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import { MapPin, Phone, Clock, Instagram, Facebook, MessageCircle, Settings } from 'lucide-react'
+import { MapPin, Phone, Clock, Instagram, Facebook, MessageCircle } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -97,17 +96,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
             {new Date().getFullYear()} Sapore Artesanal. Todos os direitos reservados.
           </p>
-          <Link
-            href="/admin"
-            className="flex items-center gap-1 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-          >
-            <Settings className="w-3 h-3" />
-            <span className="text-xs">Admin</span>
-          </Link>
         </div>
       </div>
     </footer>
