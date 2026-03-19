@@ -1,4 +1,4 @@
-import { Pizza, Drink, Extra } from './types'
+import { Pizza, Drink, Extra, BorderOption } from './types'
 
 export const pizzas: Pizza[] = [
   // TRADICIONAIS
@@ -9,10 +9,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frango.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 69.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -22,10 +21,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/calabresa.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 69.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -35,10 +33,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/paulista.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 72.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -48,10 +45,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frango-catupiry.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -61,10 +57,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/caipira.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -75,10 +70,9 @@ export const pizzas: Pizza[] = [
     category: 'tradicional',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 72.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -89,10 +83,9 @@ export const pizzas: Pizza[] = [
     category: 'tradicional',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 23.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 36.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 49.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 64.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 23.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 36.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 49.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -103,10 +96,9 @@ export const pizzas: Pizza[] = [
     category: 'tradicional',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 72.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -116,10 +108,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/crocante.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -130,10 +121,9 @@ export const pizzas: Pizza[] = [
     category: 'tradicional',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 69.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -143,10 +133,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/bacon.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
 
@@ -158,10 +147,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/havaiana.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 79.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -171,10 +159,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/lombo-especial.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -184,10 +171,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frate-nobre.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 36.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 54.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 72.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 89.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 36.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 54.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 72.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -197,10 +183,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/kruger.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -210,10 +195,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/canadense.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -223,10 +207,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/pizzaiolo.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 79.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -236,10 +219,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/primavera.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -249,10 +231,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/portuguesa.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 79.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -263,10 +244,9 @@ export const pizzas: Pizza[] = [
     category: 'nobre',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 79.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -276,10 +256,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/italiana.jpg',
     category: 'nobre',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -290,10 +269,9 @@ export const pizzas: Pizza[] = [
     category: 'nobre',
     isSpicy: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 84.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
 
@@ -305,10 +283,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/strogonoff.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 79.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 99.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 79.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -318,10 +295,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/file-mostarda.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 84.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 104.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 84.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -331,10 +307,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/barbecue-lendario.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 89.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 109.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 89.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -344,10 +319,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/barbecue-tradicional.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 79.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 99.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 79.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -357,10 +331,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frade-premium.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 89.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 109.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 89.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -370,10 +343,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/costela-desfiada.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 46.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 69.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 94.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 114.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 46.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 69.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 94.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -383,10 +355,9 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/coracao.jpg',
     category: 'premium',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 84.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 104.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 84.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
 
@@ -399,10 +370,9 @@ export const pizzas: Pizza[] = [
     category: 'doce',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 72.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -413,10 +383,9 @@ export const pizzas: Pizza[] = [
     category: 'doce',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -427,10 +396,9 @@ export const pizzas: Pizza[] = [
     category: 'doce',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 72.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -441,10 +409,9 @@ export const pizzas: Pizza[] = [
     category: 'doce',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -455,10 +422,9 @@ export const pizzas: Pizza[] = [
     category: 'doce',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa' },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas' },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3 pessoas' },
-      { size: 'familia', label: 'Família', price: 74.90, serves: '4+ pessoas' },
+      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
     ]
   },
 ]
@@ -563,6 +529,13 @@ export const extras: Extra[] = [
     price: 14.90,
     category: 'borda'
   },
+]
+
+export const borderOptions: BorderOption[] = [
+  { id: 'sem-borda', name: 'Sem borda recheada', price: 0 },
+  { id: 'borda-cheddar', name: 'Borda de Cheddar', price: 12.90 },
+  { id: 'borda-catupiry', name: 'Borda de Catupiry', price: 12.90 },
+  { id: 'borda-chocolate', name: 'Borda de Chocolate', price: 14.90 },
 ]
 
 export const categories = [

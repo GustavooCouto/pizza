@@ -33,6 +33,8 @@ export function Header() {
               width={56}
               height={56}
               className="w-12 h-12 md:w-14 md:h-14 object-contain"
+              loading="eager"
+              priority
             />
             <div className="flex flex-col">
               <span className="text-lg md:text-xl font-serif font-bold text-foreground">Sapore Artesanal</span>

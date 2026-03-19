@@ -143,3 +143,33 @@
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.3 0.1 145);
 }
+
+/* Hide scrollbar for horizontal scroll on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  .touch-manipulation {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom breakpoint for extra small devices */
+@media (min-width: 480px) {
+  .xs\:inline {
+    display: inline;
+  }
+  .xs\:hidden {
+    display: none;
+  }
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
