@@ -1,4 +1,4 @@
-export type PizzaSize = 'broto' | 'media' | 'grande'
+export type PizzaSize = 'mini' | 'pequena' | 'media' | 'grande' | 'gigante'
 
 export interface PizzaSizeOption {
   size: PizzaSize

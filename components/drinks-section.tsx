@@ -10,20 +10,12 @@ export function DrinksSection() {
   const aguas = drinks.filter(d => d.category === 'agua')
 
   return (
-    <section id="bebidas" className="py-12 sm:py-16 md:py-20 bg-background">
-      <div className="container mx-auto px-3 sm:px-4">
+    <section id="bebidas" className="py-8 sm:py-12 bg-background">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <span className="text-primary font-medium text-xs sm:text-sm uppercase tracking-wider">
-            Para Acompanhar
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-2">
-            Bebidas
-          </h2>
-          <p className="text-muted-foreground mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Complete seu pedido com nossas bebidas geladas e refrescantes.
-          </p>
-        </div>
+        <h2 className="text-xl font-bold text-foreground mb-6 uppercase tracking-wide">
+          Bebidas
+        </h2>
 
         {/* Drinks Grid - Single column on mobile, 2 columns on tablet+ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

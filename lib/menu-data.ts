@@ -1,4 +1,109 @@
-import { Pizza, Drink, Extra, BorderOption } from './types'
+import { Pizza, Drink, Extra, BorderOption, PizzaSize } from './types'
+
+// Configuração dos tamanhos de pizza
+export const pizzaSizes: {
+  size: PizzaSize
+  label: string
+  description: string
+  price: number
+  pedacos: number
+  maxFlavors: number
+  brinde?: string
+}[] = [
+  { 
+    size: 'mini', 
+    label: 'Pizza Mini', 
+    description: '4 pedaços - 1 sabor - aproximadamente 20cm.',
+    price: 32.00,
+    pedacos: 4,
+    maxFlavors: 1 
+  },
+  { 
+    size: 'pequena', 
+    label: 'Pizza Pequena', 
+    description: '6 pedaços - 2 sabores - aproximadamente 25cm.',
+    price: 50.00,
+    pedacos: 6,
+    maxFlavors: 2 
+  },
+  { 
+    size: 'media', 
+    label: 'Pizza Média', 
+    description: '8 pedaços - 3 sabores - aproximadamente 35cm.',
+    price: 60.00,
+    pedacos: 8,
+    maxFlavors: 3 
+  },
+  { 
+    size: 'grande', 
+    label: 'Pizza Grande', 
+    description: '12 pedaços - 4 sabores - aproximadamente 40cm e refrigerante de brinde!',
+    price: 75.00,
+    pedacos: 12,
+    maxFlavors: 4,
+    brinde: 'refrigerante'
+  },
+  { 
+    size: 'gigante', 
+    label: 'Pizza Gigante', 
+    description: '16 pedaços - 4 sabores - aproximadamente 45cm e refrigerante de brinde!',
+    price: 85.00,
+    pedacos: 16,
+    maxFlavors: 4,
+    brinde: 'refrigerante'
+  },
+]
+
+// Sabores de pizzas organizados por categoria
+export const pizzaFlavors = {
+  salgadas: [
+    { id: 'alema', name: 'Alemã', ingredients: 'mussarela, bacon, ovo, orégano.' },
+    { id: 'alho', name: 'Alho', ingredients: 'mussarela, alho, parmesão, manjericão, orégano.' },
+    { id: 'alho-oleo', name: 'Alho e óleo', ingredients: 'mussarela, alho, óleo, orégano.' },
+    { id: 'americana', name: 'Americana', ingredients: 'mussarela, presunto, calabresa, creme de leite, orégano.' },
+    { id: 'atum', name: 'Atum', ingredients: 'mussarela, atum, cebola, orégano.' },
+    { id: 'atumpiry', name: 'Atumpiry', ingredients: 'mussarela, atum, cebola, orégano, catupiry.' },
+    { id: 'bacon', name: 'Bacon', ingredients: 'mussarela, bacon, orégano.' },
+    { id: 'bacon-supreme', name: 'Bacon supreme', ingredients: 'mussarela, bacon, champignon, catupiry, azeitona, orégano.' },
+    { id: 'baiana', name: 'Baiana', ingredients: 'mussarela, calabresa, pimenta, cebola, orégano.' },
+    { id: 'bolonhesa', name: 'Bolonhesa', ingredients: 'mussarela, carne moída, cebola, tomate, orégano.' },
+    { id: 'calabresa', name: 'Calabresa', ingredients: 'mussarela, calabresa, cebola, orégano.' },
+    { id: 'calabresa-catupiry', name: 'Calabresa catupiry', ingredients: 'mussarela, calabresa, catupiry, orégano.' },
+    { id: 'camarao', name: 'Camarão', ingredients: 'mussarela, camarão, catupiry, orégano.' },
+    { id: 'canadense', name: 'Canadense', ingredients: 'mussarela, lombo, champignon, catupiry, orégano.' },
+    { id: 'carbonara', name: 'Carbonara', ingredients: 'mussarela, bacon, creme de leite, parmesão, orégano.' },
+    { id: 'carne-seca', name: 'Carne seca', ingredients: 'mussarela, carne seca, catupiry, cebola, orégano.' },
+    { id: 'catupiry', name: 'Catupiry', ingredients: 'mussarela, catupiry, orégano.' },
+    { id: 'cinco-queijos', name: 'Cinco queijos', ingredients: 'mussarela, provolone, parmesão, gorgonzola, catupiry, orégano.' },
+    { id: 'coracao', name: 'Coração', ingredients: 'mussarela, coração de frango, catupiry, orégano.' },
+    { id: 'escarola', name: 'Escarola', ingredients: 'mussarela, escarola refogada, alho, orégano.' },
+    { id: 'frango', name: 'Frango', ingredients: 'mussarela, frango desfiado, orégano.' },
+    { id: 'frango-catupiry', name: 'Frango catupiry', ingredients: 'mussarela, frango desfiado, catupiry, orégano.' },
+    { id: 'lombo', name: 'Lombo', ingredients: 'mussarela, lombo, cebola, orégano.' },
+    { id: 'margherita', name: 'Margherita', ingredients: 'mussarela, tomate, manjericão, orégano.' },
+    { id: 'milho', name: 'Milho', ingredients: 'mussarela, milho, orégano.' },
+    { id: 'mussarela', name: 'Mussarela', ingredients: 'mussarela, orégano.' },
+    { id: 'napolitana', name: 'Napolitana', ingredients: 'mussarela, tomate, parmesão, orégano.' },
+    { id: 'palmito', name: 'Palmito', ingredients: 'mussarela, palmito, catupiry, orégano.' },
+    { id: 'pepperoni', name: 'Pepperoni', ingredients: 'mussarela, pepperoni, orégano.' },
+    { id: 'portuguesa', name: 'Portuguesa', ingredients: 'mussarela, presunto, ovo, cebola, ervilha, orégano.' },
+    { id: 'presunto', name: 'Presunto', ingredients: 'mussarela, presunto, orégano.' },
+    { id: 'quatro-queijos', name: 'Quatro queijos', ingredients: 'mussarela, provolone, parmesão, catupiry, orégano.' },
+    { id: 'strogonoff', name: 'Strogonoff', ingredients: 'mussarela, strogonoff de frango, batata palha, orégano.' },
+    { id: 'toscana', name: 'Toscana', ingredients: 'mussarela, calabresa, bacon, cebola, orégano.' },
+    { id: 'vegetariana', name: 'Vegetariana', ingredients: 'mussarela, brócolis, milho, palmito, tomate, orégano.' },
+  ],
+  doces: [
+    { id: 'banana-canela', name: 'Banana com canela', ingredients: 'banana, canela, leite condensado.' },
+    { id: 'brigadeiro', name: 'Brigadeiro', ingredients: 'chocolate, granulado, leite condensado.' },
+    { id: 'chocolate', name: 'Chocolate', ingredients: 'chocolate ao leite, leite condensado.' },
+    { id: 'chocolate-branco', name: 'Chocolate branco', ingredients: 'chocolate branco, leite condensado.' },
+    { id: 'chocolate-morango', name: 'Chocolate com morango', ingredients: 'chocolate, morango, leite condensado.' },
+    { id: 'doce-leite', name: 'Doce de leite', ingredients: 'doce de leite, coco ralado.' },
+    { id: 'prestigio', name: 'Prestígio', ingredients: 'chocolate, coco ralado, leite condensado.' },
+    { id: 'romeu-julieta', name: 'Romeu e Julieta', ingredients: 'mussarela, goiabada, orégano.' },
+  ],
+}
 
 export const pizzas: Pizza[] = [
   // TRADICIONAIS
@@ -9,9 +114,11 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frango.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
+      { size: 'mini', label: 'Mini', price: 32.00, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
+      { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
+      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -21,9 +128,11 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/calabresa.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
+      { size: 'mini', label: 'Mini', price: 32.00, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
+      { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
+      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -33,9 +142,11 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/paulista.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
+      { size: 'mini', label: 'Mini', price: 32.00, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
+      { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
+      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -45,34 +156,11 @@ export const pizzas: Pizza[] = [
     image: '/images/pizzas/frango-catupiry.jpg',
     category: 'tradicional',
     sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'caipira',
-    name: 'Caipira',
-    description: 'Muçarela, molho de tomate, frango, milho, cheddar e orégano',
-    image: '/images/pizzas/caipira.jpg',
-    category: 'tradicional',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'napolitana',
-    name: 'Napolitana',
-    description: 'Muçarela, molho de tomate, azeitonas, cebola, alho e óleo, tomate e orégano',
-    image: '/images/pizzas/napolitana.jpg',
-    category: 'tradicional',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
+      { size: 'mini', label: 'Mini', price: 32.00, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
+      { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
+      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
     ]
   },
   {
@@ -83,348 +171,11 @@ export const pizzas: Pizza[] = [
     category: 'tradicional',
     isVegetarian: true,
     sizes: [
-      { size: 'broto', label: 'Broto', price: 23.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 36.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 49.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'marguerita',
-    name: 'Marguerita',
-    description: 'Muçarela, molho de tomate, tomate, manjericão e orégano',
-    image: '/images/pizzas/margherita.jpg',
-    category: 'tradicional',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'crocante',
-    name: 'Crocante',
-    description: 'Muçarela, molho de tomate, bacon, milho, batata palha e orégano',
-    image: '/images/pizzas/crocante.jpg',
-    category: 'tradicional',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'alho-oleo',
-    name: 'Alho e Óleo',
-    description: 'Muçarela, molho de tomate, alho e óleo e orégano',
-    image: '/images/pizzas/alho-oleo.jpg',
-    category: 'tradicional',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 25.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 39.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 54.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'bacon',
-    name: 'Bacon',
-    description: 'Muçarela, molho de tomate, bacon e orégano',
-    image: '/images/pizzas/bacon.jpg',
-    category: 'tradicional',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-
-  // NOBRES
-  {
-    id: 'havaiana',
-    name: 'Havaiana',
-    description: 'Muçarela, molho de tomate, lombo, abacaxi e orégano',
-    image: '/images/pizzas/havaiana.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'lombo-especial',
-    name: 'Lombo Especial',
-    description: 'Muçarela, molho de tomate, lombo, amendoim, bacon, figo e orégano',
-    image: '/images/pizzas/lombo-especial.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'frate-nobre',
-    name: 'Fraté Nobre',
-    description: 'Muçarela, molho de tomate, frango desfiado, bacon, pimentão, palmito, tomate, temperos especiais, catupiry e orégano',
-    image: '/images/pizzas/frate-nobre.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 36.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 54.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 72.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'kruger',
-    name: 'Kruger',
-    description: 'Muçarela, molho de tomate, frango, calabresa, bacon, milho, ervilha e orégano',
-    image: '/images/pizzas/kruger.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'canadense',
-    name: 'Canadense',
-    description: 'Muçarela, molho de tomate, lombo, champignon, catupiry e orégano',
-    image: '/images/pizzas/canadense.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'pizzaiolo',
-    name: 'Pizzaiolo',
-    description: 'Muçarela, molho de tomate, calabresa, cebola, azeitonas e orégano',
-    image: '/images/pizzas/pizzaiolo.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'primavera',
-    name: 'Primavera',
-    description: 'Muçarela, molho de tomate, presunto, milho, ervilha, cebola, bacon, maionese especial e orégano',
-    image: '/images/pizzas/primavera.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'portuguesa',
-    name: 'Portuguesa',
-    description: 'Muçarela, molho de tomate, presunto, cebola, ovo, tomate e orégano',
-    image: '/images/pizzas/portuguesa.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'brocolis',
-    name: 'Brócolis',
-    description: 'Muçarela, molho de tomate, brócolis refogado, alho e orégano',
-    image: '/images/pizzas/brocolis.jpg',
-    category: 'nobre',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 32.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 49.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 64.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'italiana',
-    name: 'Italiana',
-    description: 'Muçarela, molho de tomate, salame italiano',
-    image: '/images/pizzas/italiana.jpg',
-    category: 'nobre',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'mexicana',
-    name: 'Mexicana',
-    description: 'Muçarela, molho de tomate, carne moída (levemente apimentada), doritos e orégano',
-    image: '/images/pizzas/mexicana.jpg',
-    category: 'nobre',
-    isSpicy: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 34.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 52.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 69.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-
-  // PREMIUM
-  {
-    id: 'strogonoff-gado',
-    name: 'Strogonoff de Gado',
-    description: 'Muçarela, molho de tomate, strogonoff de gado, champignon, batata palha e orégano',
-    image: '/images/pizzas/strogonoff.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 79.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'file-mostarda',
-    name: 'Filé na Mostarda',
-    description: 'Muçarela, molho de tomate, filé picado, mostarda e orégano',
-    image: '/images/pizzas/file-mostarda.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 84.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'barbecue-lendario',
-    name: 'Barbecue Lendário',
-    description: 'Muçarela, molho de tomate, filé, bacon, cebola, pimentão, cheddar, barbecue e orégano',
-    image: '/images/pizzas/barbecue-lendario.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 89.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'barbecue-tradicional',
-    name: 'Barbecue Tradicional',
-    description: 'Muçarela, molho de tomate, filé, barbecue e orégano',
-    image: '/images/pizzas/barbecue-tradicional.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 39.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 59.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 79.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'frade-premium',
-    name: 'Frade Premium',
-    description: 'Muçarela, molho de tomate, frango desfiado, palmito, bacon, pimentão, tempero especial, cream cheese, tomate, manjericão e orégano',
-    image: '/images/pizzas/frade-premium.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 44.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 67.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 89.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'costela-desfiada',
-    name: 'Costela Desfiada',
-    description: 'Muçarela, molho de tomate, costela bovina desfiada, geleia de laranja (pimenta leve) e orégano',
-    image: '/images/pizzas/costela-desfiada.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 46.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 69.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 94.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'coracao',
-    name: 'Coração',
-    description: 'Muçarela, molho de tomate, coração ao creme de alho e orégano',
-    image: '/images/pizzas/coracao.jpg',
-    category: 'premium',
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 42.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 64.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 84.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-
-  // DOCES
-  {
-    id: 'chocofesta',
-    name: 'Chocofesta',
-    description: 'Chocolate preto e confetes',
-    image: '/images/pizzas/chocofesta.jpg',
-    category: 'doce',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'chocoberry',
-    name: 'Chocoberry',
-    description: 'Chocolate preto e morangos frescos',
-    image: '/images/pizzas/chocoberry.jpg',
-    category: 'doce',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'pina-chocolate',
-    name: 'Pina Chocolate',
-    description: 'Chocolate preto e abacaxi em calda',
-    image: '/images/pizzas/pina-chocolate.jpg',
-    category: 'doce',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 27.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 42.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 57.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'casadinho',
-    name: 'Casadinho',
-    description: 'Chocolate preto e chocolate branco',
-    image: '/images/pizzas/casadinho.jpg',
-    category: 'doce',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
-    ]
-  },
-  {
-    id: 'banoffee',
-    name: 'Banoffee',
-    description: 'Banana, chocolate branco, doce de leite e canela',
-    image: '/images/pizzas/banoffee.jpg',
-    category: 'doce',
-    isVegetarian: true,
-    sizes: [
-      { size: 'broto', label: 'Broto', price: 29.90, serves: '1 pessoa', maxFlavors: 1 },
-      { size: 'media', label: 'Média', price: 44.90, serves: '2 pessoas', maxFlavors: 3 },
-      { size: 'grande', label: 'Grande', price: 59.90, serves: '3-4 pessoas', maxFlavors: 4 },
+      { size: 'mini', label: 'Mini', price: 32.00, serves: '1 pessoa', maxFlavors: 1 },
+      { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
+      { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
+      { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
+      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
     ]
   },
 ]
@@ -476,29 +227,11 @@ export const drinks: Drink[] = [
     category: 'suco'
   },
   {
-    id: 'suco-uva',
-    name: 'Suco de Uva Integral',
-    description: 'Suco de uva integral',
-    image: '/images/drinks/suco-uva.jpg',
-    price: 12.90,
-    volume: '500ml',
-    category: 'suco'
-  },
-  {
     id: 'agua-sem-gas',
     name: 'Água Mineral',
     description: 'Água mineral sem gás',
     image: '/images/drinks/agua.jpg',
     price: 4.90,
-    volume: '500ml',
-    category: 'agua'
-  },
-  {
-    id: 'agua-com-gas',
-    name: 'Água com Gás',
-    description: 'Água mineral com gás',
-    image: '/images/drinks/agua-gas.jpg',
-    price: 5.90,
     volume: '500ml',
     category: 'agua'
   },
@@ -521,21 +254,12 @@ export const extras: Extra[] = [
     price: 12.90,
     category: 'borda'
   },
-  {
-    id: 'borda-chocolate',
-    name: 'Borda de Chocolate',
-    description: 'Borda recheada com chocolate ao leite',
-    image: '/images/extras/borda-chocolate.jpg',
-    price: 14.90,
-    category: 'borda'
-  },
 ]
 
 export const borderOptions: BorderOption[] = [
   { id: 'sem-borda', name: 'Sem borda recheada', price: 0 },
   { id: 'borda-cheddar', name: 'Borda de Cheddar', price: 12.90 },
   { id: 'borda-catupiry', name: 'Borda de Catupiry', price: 12.90 },
-  { id: 'borda-chocolate', name: 'Borda de Chocolate', price: 14.90 },
 ]
 
 export const categories = [

@@ -1,102 +1,78 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-import { pizzas, categories } from '@/lib/menu-data'
-import { PizzaCard } from '@/components/pizza-card'
+import { useState } from 'react'
+import Image from 'next/image'
+import { pizzaSizes } from '@/lib/menu-data'
 import { PizzaOrderModal } from '@/components/pizza-order-modal'
-import { cn } from '@/lib/utils'
+import { PizzaSize } from '@/lib/types'
 
 export function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState('all')
   const [orderModalOpen, setOrderModalOpen] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const [selectedSize, setSelectedSize] = useState<PizzaSize | null>(null)
 
-  const filteredPizzas = activeCategory === 'all' 
-    ? pizzas 
-    : pizzas.filter(pizza => pizza.category === activeCategory)
+  const handleSelectSize = (size: PizzaSize) => {
+    setSelectedSize(size)
+    setOrderModalOpen(true)
+  }
 
-  // Auto-scroll category into view on mobile
-  useEffect(() => {
-    if (scrollRef.current) {
-      const activeButton = scrollRef.current.querySelector('[data-active="true"]')
-      if (activeButton) {
-        activeButton.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-      }
-    }
-  }, [activeCategory])
+  // Imagens para cada tamanho
+  const sizeImages: Record<PizzaSize, string> = {
+    mini: '/images/pizzas/pizza-mini.jpg',
+    pequena: '/images/pizzas/pizza-pequena.jpg',
+    media: '/images/pizzas/pizza-media.jpg',
+    grande: '/images/pizzas/pizza-grande.jpg',
+    gigante: '/images/pizzas/pizza-gigante.jpg',
+  }
 
   return (
-    <section id="cardapio" className="py-12 sm:py-16 md:py-20 bg-card">
-      <div className="container mx-auto px-3 sm:px-4">
+    <section id="cardapio" className="py-8 sm:py-12 bg-background">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <span className="text-primary font-medium text-xs sm:text-sm uppercase tracking-wider">
-            Nosso Cardapio
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground mt-2">
-            Pizzas Artesanais
-          </h2>
-          <p className="text-muted-foreground mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base px-2">
-            Organica por essencia, recheada por prazer. Cada pizza e preparada com ingredientes 
-            frescos e selecionados.
-          </p>
-        </div>
+        <h2 className="text-xl font-bold text-foreground mb-6 uppercase tracking-wide">
+          PIZZAS
+        </h2>
 
-        {/* Category Filter - Horizontal scroll on mobile */}
-        <div 
-          ref={scrollRef}
-          className="flex gap-2 mb-6 sm:mb-10 overflow-x-auto pb-2 scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center"
-        >
-          <button
-            onClick={() => setActiveCategory('all')}
-            data-active={activeCategory === 'all'}
-            className={cn(
-              "px-4 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 touch-manipulation active:scale-95",
-              activeCategory === 'all'
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
-            )}
-          >
-            Todas
-          </button>
-          {categories.map((category) => (
+        {/* Pizza Sizes Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {pizzaSizes.map((sizeOption) => (
             <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              data-active={activeCategory === category.id}
-              className={cn(
-                "px-4 py-2.5 rounded-full text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 touch-manipulation active:scale-95",
-                activeCategory === category.id
-                  ? "bg-primary text-primary-foreground shadow-md"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              )}
+              key={sizeOption.size}
+              onClick={() => handleSelectSize(sizeOption.size)}
+              className="border border-border rounded-lg p-4 flex items-start gap-4 hover:border-primary/50 transition-colors bg-card text-left"
             >
-              {category.name}
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-orange-500 text-base mb-1">
+                  {sizeOption.label}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                  {sizeOption.description}
+                </p>
+                <p className="text-orange-600 font-bold text-base">
+                  R$ {sizeOption.price.toFixed(2).replace('.', ',')}
+                </p>
+              </div>
+
+              {/* Image */}
+              <div className="relative w-20 h-20 flex-shrink-0 rounded-md overflow-hidden">
+                <Image
+                  src={sizeImages[sizeOption.size]}
+                  alt={sizeOption.label}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
             </button>
           ))}
         </div>
-
-        {/* Pizza Grid - Optimized for mobile */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-          {filteredPizzas.map((pizza) => (
-            <PizzaCard 
-              key={pizza.id} 
-              pizza={pizza} 
-              onOrder={() => setOrderModalOpen(true)}
-            />
-          ))}
-        </div>
-
-        {/* Category count indicator */}
-        <p className="text-center text-muted-foreground text-sm mt-6 sm:mt-8">
-          {filteredPizzas.length} {filteredPizzas.length === 1 ? 'pizza encontrada' : 'pizzas encontradas'}
-        </p>
       </div>
 
       {/* Pizza Order Modal */}
       <PizzaOrderModal 
         open={orderModalOpen} 
-        onOpenChange={setOrderModalOpen} 
+        onOpenChange={setOrderModalOpen}
+        initialSize={selectedSize}
       />
     </section>
   )
