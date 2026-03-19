@@ -161,6 +161,11 @@
   }
 }
 
+/* Safe area for mobile devices with notch */
+.safe-area-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
 /* Custom breakpoint for extra small devices */
 @media (min-width: 480px) {
   .xs\:inline {
