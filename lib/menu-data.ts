@@ -43,15 +43,6 @@ export const pizzaSizes: {
     maxFlavors: 4,
     brinde: 'refrigerante'
   },
-  { 
-    size: 'gigante', 
-    label: 'Pizza Gigante', 
-    description: '16 pedaços - 4 sabores - aproximadamente 45cm e refrigerante de brinde!',
-    price: 85.00,
-    pedacos: 16,
-    maxFlavors: 4,
-    brinde: 'refrigerante'
-  },
 ]
 
 // Sabores de pizzas organizados por categoria
@@ -118,7 +109,7 @@ export const pizzas: Pizza[] = [
       { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
       { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
       { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
-      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
+      
     ]
   },
   {
@@ -132,7 +123,7 @@ export const pizzas: Pizza[] = [
       { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
       { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
       { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
-      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
+      
     ]
   },
   {
@@ -146,7 +137,7 @@ export const pizzas: Pizza[] = [
       { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
       { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
       { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
-      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
+      
     ]
   },
   {
@@ -160,7 +151,7 @@ export const pizzas: Pizza[] = [
       { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
       { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
       { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
-      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
+      
     ]
   },
   {
@@ -175,7 +166,7 @@ export const pizzas: Pizza[] = [
       { size: 'pequena', label: 'Pequena', price: 50.00, serves: '2 pessoas', maxFlavors: 2 },
       { size: 'media', label: 'Média', price: 60.00, serves: '3 pessoas', maxFlavors: 3 },
       { size: 'grande', label: 'Grande', price: 75.00, serves: '4 pessoas', maxFlavors: 4 },
-      { size: 'gigante', label: 'Gigante', price: 85.00, serves: '5+ pessoas', maxFlavors: 4 },
+      
     ]
   },
 ]

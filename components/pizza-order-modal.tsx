@@ -114,13 +114,13 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
         {/* Category Header */}
         <button
           onClick={() => setExpandedCategory(isExpanded ? (category === 'salgadas' ? 'doces' : 'salgadas') : category)}
-          className="w-full flex items-center justify-between p-4 bg-muted/30"
+          className="w-full flex items-center justify-between p-3 sm:p-4 bg-muted/30"
         >
-          <span className="font-semibold text-foreground">
+          <span className="font-semibold text-sm sm:text-base text-foreground">
             {category === 'salgadas' ? 'Salgadas' : 'Doces'}
           </span>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">sabores</span>
+            <span className="text-xs sm:text-sm text-muted-foreground">sabores</span>
             {isExpanded ? (
               <ChevronUp className="w-4 h-4 text-muted-foreground" />
             ) : (
@@ -139,41 +139,41 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
               return (
                 <div
                   key={flavor.id}
-                  className="flex items-center justify-between p-4"
+                  className="flex items-center justify-between p-3 sm:p-4"
                 >
-                  <div className="flex-1 min-w-0 pr-4">
-                    <p className="font-medium text-foreground">{flavor.name}</p>
-                    <p className="text-sm text-muted-foreground">{flavor.ingredients}</p>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <p className="font-medium text-sm sm:text-base text-foreground">{flavor.name}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{flavor.ingredients}</p>
                   </div>
 
                   {/* Quantity Controls */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                     <button
                       onClick={() => handleFlavorDecrement(flavor.id)}
                       disabled={count === 0}
                       className={cn(
-                        "w-8 h-8 flex items-center justify-center rounded-full transition-colors",
+                        "w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full transition-colors",
                         count > 0
-                          ? "text-muted-foreground hover:bg-muted"
+                          ? "text-muted-foreground hover:bg-muted active:bg-muted"
                           : "text-muted-foreground/30 cursor-not-allowed"
                       )}
                     >
-                      <Minus className="w-4 h-4" />
+                      <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
-                    <span className="w-4 text-center font-medium text-foreground">
+                    <span className="w-4 text-center font-medium text-sm sm:text-base text-foreground">
                       {count}
                     </span>
                     <button
                       onClick={() => handleFlavorIncrement(flavor.id)}
                       disabled={!canAdd}
                       className={cn(
-                        "w-8 h-8 flex items-center justify-center rounded-full transition-colors",
+                        "w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full transition-colors",
                         canAdd
-                          ? "text-muted-foreground hover:bg-muted"
+                          ? "text-muted-foreground hover:bg-muted active:bg-muted"
                           : "text-muted-foreground/30 cursor-not-allowed"
                       )}
                     >
-                      <Plus className="w-4 h-4" />
+                      <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
                   </div>
                 </div>
@@ -187,16 +187,16 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" hideCloseButton className="h-[90vh] sm:h-[85vh] p-0 rounded-t-2xl">
+      <SheetContent side="bottom" hideCloseButton className="h-[85vh] sm:h-[80vh] p-0 rounded-t-2xl">
         <div className="flex flex-col h-full">
           {/* Header */}
-          <SheetHeader className="p-4 border-b border-border flex-shrink-0">
+          <SheetHeader className="p-3 sm:p-4 border-b border-border flex-shrink-0">
             <div className="flex items-center justify-between">
               <div>
-                <SheetTitle className="text-lg font-bold text-foreground">
+                <SheetTitle className="text-base sm:text-lg font-bold text-foreground">
                   Sabores
                 </SheetTitle>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   Clique em um grupo para visualizar os sabores.
                 </p>
               </div>
@@ -208,11 +208,11 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
 
           {/* Size Info */}
           {sizeConfig && (
-            <div className="px-4 py-3 bg-muted/30 border-b border-border flex-shrink-0">
-              <p className="text-sm text-foreground">
+            <div className="px-3 sm:px-4 py-2 sm:py-3 bg-muted/30 border-b border-border flex-shrink-0">
+              <p className="text-xs sm:text-sm text-foreground">
                 <span className="font-semibold">{sizeConfig.label}</span>
                 {' - '}
-                Escolha até {maxFlavors} sabor{maxFlavors > 1 ? 'es' : ''}
+                Escolha ate {maxFlavors} sabor{maxFlavors > 1 ? 'es' : ''}
                 {' '}
                 <span className="text-primary font-medium">
                   ({totalSelectedFlavors}/{maxFlavors})
@@ -228,22 +228,22 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-border flex-shrink-0 bg-background">
-            <div className="flex items-center gap-4">
+          <div className="p-3 sm:p-4 border-t border-border flex-shrink-0 bg-background safe-area-bottom">
+            <div className="flex items-center gap-3 sm:gap-4">
               {/* Quantity Selector */}
               <div className="flex items-center border border-border rounded-lg">
                 <button
                   onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  className="w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground"
+                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-muted-foreground hover:text-foreground active:bg-muted"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="w-8 text-center font-medium text-foreground">
+                <span className="w-6 sm:w-8 text-center font-medium text-sm sm:text-base text-foreground">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(q => q + 1)}
-                  className="w-10 h-10 flex items-center justify-center text-muted-foreground hover:text-foreground"
+                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-muted-foreground hover:text-foreground active:bg-muted"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -253,7 +253,7 @@ export function PizzaOrderModal({ open, onOpenChange, initialSize }: PizzaOrderM
               <Button
                 onClick={handleAddToCart}
                 disabled={totalSelectedFlavors === 0}
-                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base font-semibold"
+                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground h-10 sm:h-12 text-sm sm:text-base font-semibold"
               >
                 Adicionar (R$ {calculatePrice().toFixed(2).replace('.', ',')})
               </Button>

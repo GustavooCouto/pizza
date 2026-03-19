@@ -1,4 +1,4 @@
-export type PizzaSize = 'mini' | 'pequena' | 'media' | 'grande' | 'gigante'
+export type PizzaSize = 'mini' | 'pequena' | 'media' | 'grande'
 
 export interface PizzaSizeOption {
   size: PizzaSize
@@ -67,9 +67,13 @@ export interface DrinkCartItem {
 export type CartItem = PizzaCartItem | DrinkCartItem
 
 export interface Customer {
-  name: string
+  name?: string
   phone: string
-  address: string
+  email?: string
+  password?: string
+  street?: string
+  number?: string
+  neighborhood?: string
   complement?: string
   paymentMethod: 'dinheiro' | 'cartao' | 'pix'
   change?: number
