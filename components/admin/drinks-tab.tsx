@@ -93,26 +93,22 @@ export function DrinksTab() {
     setIsDialogOpen(true)
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!formData.name || !formData.volume || formData.price <= 0) return
 
     if (editingDrink) {
-      updateDrink(editingDrink.id, formData)
+      await updateDrink(editingDrink.id, formData)
     } else {
-      const newDrink: Drink = {
-        id: `drink-${Date.now()}`,
-        ...formData,
-      }
-      addDrink(newDrink)
+      await addDrink(formData)
     }
 
     setIsDialogOpen(false)
     resetForm()
   }
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (deleteId) {
-      deleteDrink(deleteId)
+      await deleteDrink(deleteId)
       setDeleteId(null)
     }
   }

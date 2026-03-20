@@ -13,6 +13,7 @@ import {
   Plus
 } from 'lucide-react'
 import { useCart } from '@/components/cart-provider'
+import { useAdmin } from '@/components/admin-provider'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -38,6 +39,7 @@ function isPizzaItem(item: PizzaCartItem | DrinkCartItem): item is PizzaCartItem
 
 export function CheckoutModal({ open, onOpenChange, total: initialTotal }: CheckoutModalProps) {
   const { items, clearCart, setIsOpen, getTotal } = useCart()
+  const { addOrder } = useAdmin()
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState<Step>('auth')
   const [formData, setFormData] = useState({
@@ -141,9 +143,38 @@ ${itemsList}
     return encodeURIComponent(message)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsLoading(true)
 
+    // Salvar pedido no banco de dados
+    const order = {
+      id: `order-${Date.now()}`,
+      customer: {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        street: formData.street,
+        number: formData.number,
+        neighborhood: formData.neighborhood,
+        complement: formData.complement,
+        paymentMethod: formData.paymentMethod,
+        deliveryType: formData.deliveryType,
+        change: formData.change ? parseFloat(formData.change) : undefined,
+      },
+      items: items,
+      total: total,
+      deliveryFee: deliveryFee,
+      status: 'pending' as const,
+      createdAt: new Date(),
+    }
+
+    try {
+      await addOrder(order)
+    } catch (error) {
+      console.error('Erro ao salvar pedido:', error)
+    }
+
+    // Enviar via WhatsApp
     const message = formatWhatsAppMessage()
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`
     

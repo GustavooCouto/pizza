@@ -169,7 +169,7 @@ export function OrdersTab() {
                       <Phone className="w-3 h-3" />
                       {order.customer.phone}
                     </div>
-                    {isDelivery && (
+                    {isDelivery && order.customer.address && (
                       <div className="flex items-start gap-2 text-sm text-muted-foreground">
                         <MapPin className="w-3 h-3 mt-0.5" />
                         <span>
@@ -234,7 +234,7 @@ export function OrdersTab() {
                   {/* Actions */}
                   {nextStatus && (
                     <Button
-                      onClick={() => updateOrderStatus(order.id, nextStatus)}
+                      onClick={async () => await updateOrderStatus(order.id, nextStatus)}
                       className="w-full bg-primary hover:bg-primary/90"
                     >
                       Avancar para: {statusConfig[nextStatus].label}

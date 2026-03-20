@@ -75,6 +75,7 @@ export interface Customer {
   number?: string
   neighborhood?: string
   complement?: string
+  address?: string
   paymentMethod: 'dinheiro' | 'cartao' | 'pix'
   change?: number
   deliveryType: 'entrega' | 'retirada'
