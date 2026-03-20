@@ -24,10 +24,12 @@ import { Badge } from '@/components/ui/badge'
 import { OrdersTab } from '@/components/admin/orders-tab'
 import { PizzasTab } from '@/components/admin/pizzas-tab'
 import { DrinksTab } from '@/components/admin/drinks-tab'
+import { CustomersTab } from '@/components/admin/customers-tab'
+import { Users } from 'lucide-react'
 
 export default function AdminDashboardPage() {
   const router = useRouter()
-  const { isAuthenticated, logout, orders, pizzas, drinks, loading, refreshData } = useAdmin()
+  const { isAuthenticated, logout, orders, pizzas, drinks, customers, loading, refreshData } = useAdmin()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -179,7 +181,7 @@ export default function AdminDashboardPage() {
 
         {/* Tabs */}
         <Tabs defaultValue="orders" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-3 bg-muted">
+          <TabsList className="grid w-full grid-cols-4 bg-muted">
             <TabsTrigger value="orders" className="gap-2 data-[state=active]:bg-background">
               <ClipboardList className="w-4 h-4" />
               <span className="hidden sm:inline">Pedidos</span>
@@ -203,6 +205,13 @@ export default function AdminDashboardPage() {
                 {drinks.length}
               </Badge>
             </TabsTrigger>
+            <TabsTrigger value="customers" className="gap-2 data-[state=active]:bg-background">
+              <Users className="w-4 h-4" />
+              <span className="hidden sm:inline">Clientes</span>
+              <Badge variant="secondary" className="ml-1 text-xs">
+                {customers.length}
+              </Badge>
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="orders">
@@ -215,6 +224,10 @@ export default function AdminDashboardPage() {
 
           <TabsContent value="drinks">
             <DrinksTab />
+          </TabsContent>
+
+          <TabsContent value="customers">
+            <CustomersTab />
           </TabsContent>
         </Tabs>
       </main>
